@@ -1,0 +1,80 @@
+cabal-version: 2.2
+
+-- This file has been generated from package.yaml by hpack version 0.35.1.
+--
+-- see: https://github.com/sol/hpack
+
+name:           sexp-rewriter
+version:        0.1.0.0
+synopsis:       An syntactic matcher and rewriter for SMT-LIB2-style s-expressions.
+description:    Please see the README on GitHub at <https://github.com/usfca-pati/sexp-rewriter#readme>
+homepage:       https://github.com/usfca-pati/sexp-rewriter#readme
+bug-reports:    https://github.com/usfca-pati/sexp-rewriter/issues
+author:         Mehmet Emre
+maintainer:     memre@usfca.edu
+copyright:      2023 Mehmet Emre
+license:        GPL-3.0-only
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGELOG.md
+
+source-repository head
+  type: git
+  location: https://github.com/usfca-pati/sexp-rewriter
+
+library
+  exposed-modules:
+      Parser
+      Rewriting
+      Syntax
+  other-modules:
+      Paths_sexp_rewriter
+  autogen-modules:
+      Paths_sexp_rewriter
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-signatures -Wno-name-shadowing
+  build-depends:
+      base >=4.7 && <5
+    , containers >=0.6.5.1 && <1
+    , optparse-applicative
+    , parsec
+  default-language: Haskell2010
+
+executable sexp-rewriter-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_sexp_rewriter
+  autogen-modules:
+      Paths_sexp_rewriter
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-signatures -Wno-name-shadowing -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , containers >=0.6.5.1 && <1
+    , optparse-applicative
+    , parsec
+    , sexp-rewriter
+  default-language: Haskell2010
+
+test-suite sexp-rewriter-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_sexp_rewriter
+  autogen-modules:
+      Paths_sexp_rewriter
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-signatures -Wno-name-shadowing -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , containers >=0.6.5.1 && <1
+    , hspec
+    , optparse-applicative
+    , parsec
+    , sexp-rewriter
+  default-language: Haskell2010

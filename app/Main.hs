@@ -50,7 +50,10 @@ readFromFile parser path = do
     Left err -> die $ "Parse error: " ++ show err
     Right a -> return a
 
-applyAllRules rules sexp = foldl (flip applyRule) sexp rules
+applyAllRules rules sexp = foldl applyTillFixpoint sexp rules
+  where
+    applyTillFixpoint s rule = let s' = applyRule rule s in
+      if s == s' then s' else applyTillFixpoint s' rule
 
 main :: IO ()
 main = do
